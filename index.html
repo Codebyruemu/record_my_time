@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studybuddy</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1>Study Buddy</h1>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+           <div class="link-con">
+             <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">contact</a></li>
+               
+            </ul>
+            <ul>
+                <li id="u-name"></li>
+            </ul>
+           </div>
+           
+        </div>
+    </nav>
+    <section class="showcase">
+        <div class="container">
+            <p id="slide-words">No Active study session!</p>
+        </div>
+        <button id="session-btn" class="session-btn">login a session</button>
+       
+    </section>
+    <section class="section-2">
+        <div class="container">
+            <div id="study-2-header"></div>
+            <div class="history hidden" id="history"><a href="./records.html" target="_blank"><button>view history</button></a></div>        
+            <div class="main-div">
+                <div class="side-one">
+                    <div class="time-cont">
+                        <h3 class="time-heading-bg">time locked in</h3>
+                        <div class="time-cont-menu">
+                            <h1 id="displayTime1">00:00:00</h1>
+                            <div id="time-buttons" class="buttons">
+                                <img id="watchStop"  class="timebtn hidden" src="./images/icons8-pause-96.png"  alt="pause-icon">
+                                <img  id="watchStart" class="timebtn hidden" src="./images/icons8-play-96.png"   alt="play-icon" >
+                            </div>
+                            
+                        </div>   
+                    </div>   
+                </div>
+                <div class="side-two">
+                    <div class="time-cont">
+                        <h3 class="time-heading-bg">3hrs per session</h3>
+                        <div class="time-cont-menu">
+                            <h1 id="displayTime2">00:00:00</h1>
+                       
+                            </div>
+                            
+                        </div>   
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+        <p>Copyright &copy; 2026 Study buddy</p>
+    </footer>
+     <!-- enter username Modal -->
+    <div id="modal-cont" class="modal hidden">
+        <div class="modal-wrapper">
+            <div class="modal-content">
+                <form id="name-form" class="modal-form">
+                    <input type="text" placeholder="your name" class="input-form" id="name" required>
+                    <button type="submit" class="submit-btn">enter</button>
+                </form>
+            </div>
+            <button class="close-modal">X</button>
+
+        </div>
+   
+    </div>
+        
+    <!-- usname enforcement  Modal -->
+    <div id="modal-cont-2" class="modal hidden">
+        <div class="modal-content-2">
+            <h3>username is required 😊</h3>
+            <button id="bck-login"><span style="margin-right: 5px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><</span>
+                go back</button>
+        </div>
+    </div>
+
+    <div id="study-cont" class="modal hidden">
+        <div class="modal-wrapper">
+            <div class="modal-content">
+                <form id="study-form" class="modal-form">
+                    <input type="text" placeholder="today study focus" class="input-form" id="study-focus" required>
+                    <button type="submit" class="submit-btn">enter</button>
+                </form>
+            </div>
+
+        </div>
+   
+    </div>
+
+    
+    <script type="module" src="./study.js"></script>
+    <script type="module" src="./utilityfunc.js"></script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #555;
+    font-size: 16px;
+    
+}
+.container{
+    width: 80%;
+    margin: auto;
+    /* overflow hidden will not make the browser give a horizontal scroll when element push out of the container */
+    overflow: hidden;
+}
+.main-header{
+    background-color: coral;
+    color:#fff
+}
+nav{
+    background-color: black;
+}
+.link-con{
+    display: flex;
+    justify-content: space-between;
+}
+.link-con ul{
+    list-style: none;
+    padding: 0;
+
+}
+.link-con:last-child{
+    font-size: 15px;
+    color: white;
+    font-weight: bold;
+
+}
+
+.link-con ul li{
+    display: inline-block;
+    margin-right: 0.5em;
+    font-size: 15px;
+    font-weight: bold;
+}
+.link-con ul li a{
+    color: white;
+    text-decoration: none;
+    
+}
+.showcase{
+    background-image: url('./images/abstractbg.jpg');
+    background-position: bottom left;
+    min-height: 300px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.showcase p{
+    color:#333;
+    font-size: 40px;
+    line-height: 1.6em;
+    padding: 30px;
+}
+.section-2-h3{
+    margin: 0; 
+    display: inline-block;
+
+}
+.main-div{
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-between;
+}
+.side-one{
+    
+    width:45%;
+    border:0.7px solid #aaa9a9;
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.side-two{
+   
+    width:45%;
+    border:0.7px solid #aaa9a9;
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding: 10px;
+} 
+.time-cont{
+    display: flex;
+    flex-direction: column;
+}
+.time-heading-bg{
+    background-image: linear-gradient(120deg, #6a0dad, #7127b6, #1e90ff);
+    text-align: center;
+    padding: 5px 0;
+    width:35%;
+    color: white;
+    border-radius:15px;
+    
+
+}
+.time-cont-menu{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+#time-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#time-buttons img {
+    width: 30px;
+    margin: 0 15px;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out; /* smooth effect */
+}
+
+/* Hover effect */
+@media (hover:hover) {
+    #time-buttons img:hover {
+        opacity: 0.7;
+        box-shadow: -1px 1px 20px rgba(98, 129, 150, 0.7);
+        border-radius: 5px;
+    }
+}
+
+/* Click (active) effect */
+#time-buttons img:active {
+    transform: scale(0.9); /* shrink slightly */
+    background-color: rgba(98, 129, 150, 0.2); /* subtle background */
+    box-shadow: inset 0 0 10px rgba(98, 129, 150, 0.8); /* inner shadow */
+}
+
+
+
+.main-footer{
+    background: #333;
+    color: #fff;
+    text-align: center;
+    margin-top:40px;
+    padding: 20px;
+
+}
+.session-btn{
+    width:30%;
+    text-align: center;
+    /* padding: 5px 0; */
+    border:1.5px solid #cfcece;
+    border-radius: 15px;
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+}
+.session-btn:hover{
+    cursor: pointer;
+    background-color: #333;
+}
+
+
+
+/* Cart Modal */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(14, 13, 13, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    padding: 0;
+    background: rgb(216, 211, 211);
+    border-radius: 5px;
+    padding: 4rem;
+    
+  }
+  .modal-form{
+    display: flex;
+    justify-content: center;
+
+  }
+  .modal-form input{
+    padding: 10px;
+    border-start-start-radius:15px ;
+    border-end-start-radius:15px ;
+    border:1.5px solid #cfcece;
+    
+  }
+
+  .modal-form button{
+    padding: 10px;
+    border-start-end-radius:15px ;
+    border-end-end-radius:15px ;
+    border:1.5px solid #cfcece;
+    font-size: 17px;
+    
+  }
+  .modal-form button:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #333;
+
+  }
+  .modal-wrapper{
+  width: 80%;
+  max-width: 500px;
+  position: relative;
+  background-color: transparent;
+  padding: 40px;
+  }
+  .close-modal{
+ width: 25px;
+  height: 25px;
+  background-color: white;
+  position: absolute;
+  cursor: pointer;
+  top: 20px;   
+  right: 15px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 70%;
+  border: none;
+  }
+  .close-modal:hover{
+    background-color: #999898;
+    color:#f4f4f4;
+  }
+  .modal-content-2{
+    background: rgb(216, 211, 211);
+    border-radius: 5px;
+    padding: 2rem;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+  }
+  .modal-content-2 button{
+    width:30%;
+    padding: 4px;
+    border-radius: 5px;
+    color:black;
+    cursor: pointer;
+    font-size: 16px;
+
+  }
+  .modal-content-2 button:hover{
+    color: white;
+    background-color: black;
+  }
+
+  .history{
+    justify-self: end;
+    margin: 0;
+    padding: 10px 0;
+  }
+  .history button{
+    font-size: 14px;
+    padding: 5px 6px;
+    border:0.7px solid #9c9a9a ;
+    border-radius: 15px;
+    cursor: pointer;
+    
+
+  }
+  .history button:hover{
+    background-color: #333;
+    color: white;
+  }
+
+
+@media(max-width:767px){
+    .link-con ul li{
+        margin-right: 0.2em;
+        font-size: 12px;
+        font-weight: bold;
+
+    }
+    .showcase{
+    min-height: 250px;
+    
+}
+    .showcase p{
+        font-size: 20px;
+        padding-bottom: 10px;
+        
+    }
+    .main-header h1{
+        font-size: 20px;
+    }
+    .main-div{
+        flex-direction: column;
+        gap: 10px; 
+     }
+    .side-one{
+        width: 100%;
+    }
+    .time-heading-bg{
+        font-size: 12px;
+        width:50%;
+    }
+    .time-cont h1{
+        font-size: 20px;
+        margin: 5px;
+    }
+    .side-two{
+        width: 100%;
+    }
+    .session-btn{
+    width:50%;
+    font-size: 12px;
+    font-weight: 700;
+    }
+     .modal-content {
+    background: rgb(247, 244, 244);
+    padding: 20px;
+    
+  }
+  .modal-form{
+    display: flex;
+    justify-content: center;
+
+  }
+  .modal-form input{
+    padding: 7px;
+  }
+  .modal-form button{
+    padding: 7px;
+    font-size: 15px;
+    
+  }
+  
+  .modal-wrapper{
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+  width: 100%;
+  position: relative;
+  }
+  .close-modal{
+ width: 15px;
+  height: 15px;
+  top: 5px;   
+  right: 15px; 
+  border: none;
+  }
+    
+}
+
+.hidden{
+    display: none;
+}
+.show{
+    display: block;
+}
