@@ -87,7 +87,7 @@ table{
 }
 table td,th{
     border:1px solid #858181;
-    text-align: left;
+    text-align: center;
     padding: 8px;
     text-wrap: wrap;
 

@@ -15,7 +15,8 @@ if(lockInTimeObj !== null){
     const entryArr = Object.entries(lockInTimeObj).reverse()
     entryArr.forEach(([k,v])=>{
         let sumVal = v.reduce((x,y)=>x+y)
-        let avg = sumVal/v.length
+        let avg = (sumVal/v.length)
+        let processAvg = parseFloat(avg.toFixed(2))
 
         const dataDay = document.createElement('td')
         const dataTotalTime = document.createElement('td')
@@ -23,7 +24,7 @@ if(lockInTimeObj !== null){
 
         dataDay.textContent = `${k}`
         dataTotalTime.textContent = `${sumVal}`
-        dataAvgTime.textContent = `${avg}`
+        dataAvgTime.textContent = `${processAvg}`
 
         dataTbRow.appendChild(dataDay)
         dataTbRow.appendChild(dataTotalTime)
