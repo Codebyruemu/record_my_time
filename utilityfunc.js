@@ -40,7 +40,8 @@ let [sec2, min2, hr2] = [0,0,0]; // Clock2
 let clock1 = null;
 let clock2 = null;
 
-const threshold = 3 * 60 * 60 * 1000; // 3 hours
+const threshold = 60 * 1000; // 3 hours
+//const threshold = 3 * 60 * 60 * 1000; // 3 hours
 let start = null;
 
 function formatTime(h, m, s) {

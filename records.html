@@ -3,9 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Studybuddy reports</title>
+    <link rel="stylesheet" href="./records.css">
 </head>
 <body>
-    <h1>coming soon!</h1>
+    <header class="main-header">
+        <div class="container">
+            <h1>Study Buddy</h1>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <div class="link-con">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    
+                </ul>
+                <ul>
+                    <li id="u-name"></li>
+                </ul>
+            </div>
+        
+        </div>
+    </nav>
+    <div class="container">
+        <div id="no-report" class="report-heading hidden">
+            <h2>Studybuddy weekly report</h2>
+            <p> No report found!</p>
+        </div>
+        <div id="report-found" class="hidden">
+            <div  class="report-heading">
+                <h2>Studybuddy weekly report</h2>
+                <small>-reports are in lastest to old order</small>
+
+            </div>
+            <table>
+                <tr>
+                    <th>Day</th>
+                    <th>Total Hours invested</th>
+                    <th>average Time</th>
+                </tr>
+                <tr id="actual-data">
+                    
+                </tr> 
+                
+            </table>
+        </div>
+    </div>
+    <footer class="main-footer">
+        <p>Copyright &copy; 2026 Study buddy</p>
+    </footer>
+        
+    <script src="./records.js"></script>
 </body>
 </html>

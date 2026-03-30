@@ -110,13 +110,3 @@ function getLastThreeDays(clockedTime) {
 
   return lastThreeKeys.map(key => ({ [key]: clockedTime[key] }));
 }
-
-
-
-function stopSessionDisplay (timerInterval,el,sessionBtn){
-    clearInterval(timerInterval)
-    el.textContent = 'No Active study session!'
-    sessionBtn.classList.remove('hidden')
-    
-
-}
