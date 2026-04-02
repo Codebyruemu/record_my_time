@@ -10,25 +10,29 @@ if (userName !== null){
 
 if(lockInTimeObj !== null){
     const reportFound = document.getElementById('report-found')
-    const dataTbRow = document.getElementById('actual-data')
-    dataTbRow.innerHTML=""
+    const table = document.querySelector('table')
+    console.log(table)
+    
     const entryArr = Object.entries(lockInTimeObj).reverse()
     entryArr.forEach(([k,v])=>{
         let sumVal = v.reduce((x,y)=>x+y)
         let avg = (sumVal/v.length)
         let processAvg = parseFloat(avg.toFixed(2))
 
-        const dataDay = document.createElement('td')
-        const dataTotalTime = document.createElement('td')
-        const dataAvgTime = document.createElement('td')
+        const tableRw = document.createElement('tr')
+        const Day = document.createElement('td')
+        const dayTotalTime = document.createElement('td')
+        const dayAvgTime = document.createElement('td')
 
-        dataDay.textContent = `${k}`
-        dataTotalTime.textContent = `${sumVal}`
-        dataAvgTime.textContent = `${processAvg}`
+        Day.textContent = `${k}`
+        dayTotalTime.textContent = `${sumVal}`
+        dayAvgTime.textContent = `${processAvg}`
 
-        dataTbRow.appendChild(dataDay)
-        dataTbRow.appendChild(dataTotalTime)
-        dataTbRow.appendChild(dataAvgTime)
+        tableRw.appendChild(Day)
+        tableRw.appendChild(dayTotalTime)
+        tableRw.appendChild(dayAvgTime)
+
+        table.appendChild(tableRw)
 
     })
     document.getElementById('no-report').classList.add('hidden')

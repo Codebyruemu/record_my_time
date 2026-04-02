@@ -1,5 +1,3 @@
-import { motivationTips,sessionBtn,sliderIntervalId,subjectFocus } from "./study.js";
-
 const records = document.getElementById("history")
 const displayTime1 = document.getElementById('displayTime1'); 
 const displayTime2 = document.getElementById('displayTime2'); 
@@ -7,6 +5,15 @@ const displayTime2 = document.getElementById('displayTime2');
 const watchStopBtn = document.getElementById("watchStop");
 const watchStartBtn = document.getElementById("watchStart");
 
+const motivationTips = document.getElementById('slide-words');
+const sessionBtn = document.getElementById('session-btn');
+const subjectFocus = document.getElementById("study-2-header");
+
+const dynamicTxtOne = document.getElementById('dynamic-txt-1')
+const dynamicTxtTwo = document.getElementById('dynamic-txt-2')
+
+let threshold = 0;
+let onStopCallback = null;
 
 const Quotes = [
     "Don’t watch the clock; do what it does. Keep going.",
@@ -40,7 +47,7 @@ let [sec2, min2, hr2] = [0,0,0]; // Clock2
 let clock1 = null;
 let clock2 = null;
 
-const threshold = 3 * 60 * 60 * 1000; // 3 hours
+ 
 let start = null;
 
 function formatTime(h, m, s) {
@@ -79,7 +86,9 @@ function resetTimeUI (){
 }
 
 // Auto‑start both clocks
-export function initClocks() {
+export function initClocks(lockedInTime, stopCallback = null) {
+  threshold = lockedInTime * 60 * 60 * 1000;
+  onStopCallback = stopCallback;
   if (!clock1 && !clock2) {
     start = Date.now();
     clock1 = setInterval(tickClock1, 1000);
@@ -107,9 +116,6 @@ function stopAll() {
   clearInterval(clock2);
   clock1 = null;
   clock2 = null;
-  clearInterval(sliderIntervalId)
-
-
 
   console.log("Threshold reached!");
   console.log("Clock1 final:", formatTime(hr1, min1, sec1));
@@ -118,7 +124,9 @@ function stopAll() {
     let currentDayName = getDay()
     let timeValue = hr1 + (min1/100)
     console.log(currentDayName)
-    console.log(sec1,min1,hr1)
+    console.log(hr1,min1,sec1)
+
+  if (onStopCallback) onStopCallback();
 
    addStudyItem(currentDayName,timeValue)
    
@@ -159,13 +167,13 @@ function addStudyItem(day, timeValue) {
   studyData[1] = clockedTime;
 
   localStorage.setItem('studyData', JSON.stringify(studyData));
-  stopSlider()
+  reseUiEl()
     
  
 }
 
-
-function stopSlider() {
+//this function just updates UI does not have anything todo with slider() above
+function reseUiEl() {
   setTimeout(()=>{
     motivationTips.textContent='No Active study session!'
   },3000)
@@ -174,6 +182,9 @@ function stopSlider() {
   watchStartBtn.classList.add('hidden')
   watchStopBtn.classList.add('hidden')
   subjectFocus.innerHTML=""
+  dynamicTxtOne.textContent=""
+  dynamicTxtTwo.textContent=""
+
   resetTimeUI()
   records.classList.remove('hidden')
 

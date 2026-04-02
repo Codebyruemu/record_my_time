@@ -4,7 +4,7 @@ import { initClocks,slider } from './utilityfunc.js'
 const studyData = JSON.parse(localStorage.getItem('studyData')) || []
 const profileName = studyData[0]
 
-export let sliderIntervalId;
+
 
 
 
@@ -48,9 +48,8 @@ const TimeContDiv = document.getElementById("time-buttons");
 const timeControls = TimeContDiv.querySelectorAll('img')
 const studyContainer = document.getElementById("study-cont");
 const subjectFocus = document.getElementById("study-2-header");
-const motivationTips = document.getElementById('slide-words')
+const motivationTips = document.getElementById('slide-words');
 
-export { motivationTips, sessionBtn,subjectFocus}
 
 //session subject entry trigger button
 sessionBtn.addEventListener('click', ()=>{
@@ -59,12 +58,17 @@ sessionBtn.addEventListener('click', ()=>{
 
 //session subject login
 const focusForm = document.getElementById('study-form')
+const dynamicTxtOne = document.getElementById('dynamic-txt-1')
+const dynamicTxtTwo = document.getElementById('dynamic-txt-2')
 if(focusForm){
     focusForm.addEventListener("submit" , (e) =>{
         e.preventDefault();
         subjectFocus.innerHTML=""
-        studyContainer.classList.add('hidden')
         let focusInput = document.getElementById('study-focus').value
+        let studyDuration = document.getElementById('locked-in-time').value
+        let lockedInTime = saveLockedInTime(Number(studyDuration),dynamicTxtOne,dynamicTxtTwo);
+        studyContainer.classList.add('hidden');
+        
         subjectFocus.innerHTML = `
         <img src="./images/182321.png" alt="book" width="20px" height="20px">
         <h3 class="section-2-h3">${focusInput}</h3>`
@@ -73,12 +77,10 @@ if(focusForm){
         })
         motivationTips.textContent="Be intentional about what you want"
         sessionBtn.classList.add('hidden')
-        sliderIntervalId = slider(motivationTips)
-        initClocks()
-        //clearInterval(sliderIntervalId); 
+        let sliderIntervalId = slider(motivationTips)
 
-       // motivationTips.textContent="Time investment save successful 👍"
-        //stopSessionDisplay(wordSlider,motivationTips,sessionBtn)
+        //its the timer engine(starts timer, stop timer)
+        initClocks(lockedInTime, () => clearInterval(sliderIntervalId))
         
     })
 }
@@ -93,12 +95,21 @@ const processName = (name)=>{
 
 function nameSave(name){
     if(name){
-        console.log(name)
         studyData[0] = name
         localStorage.setItem('studyData',JSON.stringify(studyData))
         return name
     }
 };
+
+function saveLockedInTime(timeVal,elone,elTwo){
+    console.log(timeVal)
+    if(timeVal<=0) return null
+    elone.textContent ='time invested'
+    elTwo.textContent= `${timeVal} hr(s) stoppage time`
+    //studyData[2] = timeVal
+    //localStorage.setItem('studyData',JSON.stringify(studyData))
+    return timeVal
+}
 
 
 

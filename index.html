@@ -41,7 +41,7 @@
             <div class="main-div">
                 <div class="side-one">
                     <div class="time-cont">
-                        <h3 class="time-heading-bg">time locked in</h3>
+                        <h3 class="time-heading-bg" id="dynamic-txt-1"></h3>
                         <div class="time-cont-menu">
                             <h1 id="displayTime1">00:00:00</h1>
                             <div id="time-buttons" class="buttons">
@@ -54,7 +54,7 @@
                 </div>
                 <div class="side-two">
                     <div class="time-cont">
-                        <h3 class="time-heading-bg">3hrs per session</h3>
+                        <h3 class="time-heading-bg" id="dynamic-txt-2"></h3>
                         <div class="time-cont-menu">
                             <h1 id="displayTime2">00:00:00</h1>
                        
@@ -97,8 +97,15 @@
         <div class="modal-wrapper">
             <div class="modal-content">
                 <form id="study-form" class="modal-form">
-                    <input type="text" placeholder="today study focus" class="input-form" id="study-focus" required>
-                    <button type="submit" class="submit-btn">enter</button>
+                    <div>
+                        <input type="text" placeholder="today's study focus" class="input-form" id="study-focus" required>
+                    </div>
+                    <div>
+                        <input type="number" placeholder="enter number of hours" class="input-form" id="locked-in-time" required min="">
+                    </div>
+                    <div>
+                        <button type="submit" class="submit-btn">enter</button>
+                    </div>
                 </form>
             </div>
 
@@ -108,6 +115,6 @@
 
     
     <script type="module" src="./study.js"></script>
-    <script type="module" src="./utilityfunc.js"></script>
+    <script type="module" src="./utilityfunc.js" defer></script>
 </body>
 </html>

@@ -183,23 +183,26 @@ nav{
   }
   .modal-form{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    
 
   }
   .modal-form input{
     padding: 10px;
-    border-start-start-radius:15px ;
-    border-end-start-radius:15px ;
-    border:1.5px solid #cfcece;
+    border-radius:15px ;
+    border:1px solid #cfcece;
+    margin-bottom: 6px;
+    width:90%;
+    text-align: center;
     
   }
 
   .modal-form button{
-    padding: 10px;
-    border-start-end-radius:15px ;
-    border-end-end-radius:15px ;
-    border:1.5px solid #cfcece;
+    padding: 5px;
+    border-radius:15px ;
+    border:1px solid #cfcece;
     font-size: 17px;
+    width: 95%;
     
   }
   .modal-form button:hover{
@@ -273,7 +276,7 @@ nav{
     background-color: #333;
     color: white;
   }
-
+  
 
 @media(max-width:767px){
     .link-con ul li{
