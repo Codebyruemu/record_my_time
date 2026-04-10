@@ -157,11 +157,24 @@ function addStudyItem(day, timeValue) {
   let studyData = JSON.parse(localStorage.getItem('studyData')) || [];
 
   let clockedTime = studyData[1] !== undefined ? studyData[1] : {};
+  let todayDate = new Date().getDate()
 
   if (clockedTime.hasOwnProperty(day)) {
-    clockedTime[day].push(timeValue);
+      if(clockedTime.lastTime){
+          if((todayDate - clockedTime.lastTime)>0 ){
+              clockedTime[day] = [timeValue]
+          }
+          clocked[day].push(timeValue)
+      }else{
+        clockedTime[day]=[timeValue];
+        clockedTime.lastTime = todayDate
+
+      }
+      
   } else {
     clockedTime[day] = [timeValue];
+    clockedTime.lastTime = todayDate
+
   }
 
   studyData[1] = clockedTime;
