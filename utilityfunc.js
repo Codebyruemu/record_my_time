@@ -161,10 +161,11 @@ function addStudyItem(day, timeValue) {
 
   if (clockedTime.hasOwnProperty(day)) {
       if(clockedTime.lastTime){
-          if((todayDate - clockedTime.lastTime)>0 ){
-              clockedTime[day] = [timeValue]
+          if(lastTime === todayDate ){
+              clocked[day].push(timeValue) 
           }
-          clocked[day].push(timeValue)
+          clockedTime[day]=[timeValue];
+
       }else{
         clockedTime[day]=[timeValue];
         clockedTime.lastTime = todayDate
