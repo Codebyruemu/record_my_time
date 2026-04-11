@@ -160,6 +160,7 @@ function addStudyItem(day, timeValue) {
   let todayDate = new Date().getDate()
 
   if (clockedTime.hasOwnProperty(day)) {
+    
       if(clockedTime.lastTime){
           if(lastTime === todayDate ){
               clocked[day].push(timeValue) 
@@ -185,6 +186,8 @@ function addStudyItem(day, timeValue) {
     
  
 }
+
+
 
 //this function just updates UI does not have anything todo with slider() above
 function reseUiEl() {

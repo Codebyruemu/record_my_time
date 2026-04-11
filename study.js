@@ -1,4 +1,6 @@
 
+localStorage.removeItem('studyData')
+
 import { initClocks,slider } from './utilityfunc.js' 
 
 const studyData = JSON.parse(localStorage.getItem('studyData')) || []
