@@ -15,8 +15,8 @@ if(lockInTimeObj !== null){
     
     const entryArr = Object.entries(lockInTimeObj).reverse()
     entryArr.forEach(([k,v])=>{
-        let sumVal = v.reduce((x,y)=>x+y)
-        let avg = (sumVal/v.length)
+        let sumVal = v.timeVest.reduce((x,y)=>x+y)
+        let avg = (sumVal/v.timeVest.length)
         let processAvg = parseFloat(avg.toFixed(2))
 
         const tableRw = document.createElement('tr')

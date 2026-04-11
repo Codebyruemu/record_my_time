@@ -87,7 +87,8 @@ function resetTimeUI (){
 
 // Auto‑start both clocks
 export function initClocks(lockedInTime, stopCallback = null) {
-  threshold = lockedInTime * 60 * 60 * 1000;
+  threshold = lockedInTime* 60 * 1000;
+  //threshold = lockedInTime * 60 * 60 * 1000;
   onStopCallback = stopCallback;
   if (!clock1 && !clock2) {
     start = Date.now();
@@ -153,33 +154,13 @@ function getDay() {
     }
 }
 
-function addStudyItem(day, timeValue) {
+function addStudyItem(today, timeValue) {
   let studyData = JSON.parse(localStorage.getItem('studyData')) || [];
 
   let clockedTime = studyData[1] !== undefined ? studyData[1] : {};
-  let todayDate = new Date().getDate()
+  let dayOfMonth = new Date().getDate()
 
-  if (clockedTime.hasOwnProperty(day)) {
-    
-      if(clockedTime.lastTime){
-          if(lastTime === todayDate ){
-              clocked[day].push(timeValue) 
-          }
-          clockedTime[day]=[timeValue];
-
-      }else{
-        clockedTime[day]=[timeValue];
-        clockedTime.lastTime = todayDate
-
-      }
-      
-  } else {
-    clockedTime[day] = [timeValue];
-    clockedTime.lastTime = todayDate
-
-  }
-
-  studyData[1] = clockedTime;
+  studyData[1] = addvals(timeValue,today,dayOfMonth,clockedTime);
 
   localStorage.setItem('studyData', JSON.stringify(studyData));
   reseUiEl()
@@ -187,6 +168,26 @@ function addStudyItem(day, timeValue) {
  
 }
 
+function addvals (timeVal,today,dayOfMonth,clockedTime) {
+
+if(clockedTime.hasOwnProperty(today)){
+  let dayInfo = clockedTime[today]
+    if(dayInfo.lastTimeThisDay !== dayOfMonth){
+        dayInfo.timeVest = [timeVal];
+        dayInfo.lastTimeThisDay = dayOfMonth
+        clockedTime[today] = dayInfo
+        
+    }
+    dayInfo.timeVest.push(timeVal);
+    clockedTime[today] = dayInfo
+   
+}else{
+  clockedTime[today] = {timeVest : [timeVal], lastTimeThisDay : dayOfMonth }
+
+}
+
+return clockedTime
+}
 
 
 //this function just updates UI does not have anything todo with slider() above
