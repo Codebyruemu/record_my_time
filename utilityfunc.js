@@ -170,23 +170,23 @@ function addStudyItem(today, timeValue) {
 
 function addvals (timeVal,today,dayOfMonth,clockedTime) {
 
-if(clockedTime.hasOwnProperty(today)){
-  let dayInfo = clockedTime[today]
-    if(dayInfo.lastTimeThisDay !== dayOfMonth){
-        dayInfo.timeVest = [timeVal];
-        dayInfo.lastTimeThisDay = dayOfMonth
-        clockedTime[today] = dayInfo
-        
-    }
-    dayInfo.timeVest.push(timeVal);
-    clockedTime[today] = dayInfo
-   
-}else{
-  clockedTime[today] = {timeVest : [timeVal], lastTimeThisDay : dayOfMonth }
+  if(clockedTime.hasOwnProperty(today)){
+    let dayInfo = clockedTime[today]
+      if(dayInfo.lastTimeThisDay !== dayOfMonth){
+          dayInfo.timeVest = [timeVal];
+          dayInfo.lastTimeThisDay = dayOfMonth
+          clockedTime[today] = dayInfo
+          
+      }
+      dayInfo.timeVest.push(timeVal);
+      clockedTime[today] = dayInfo
+    
+  }else{
+    clockedTime[today] = {timeVest : [timeVal], lastTimeThisDay : dayOfMonth }
 
-}
+  }
 
-return clockedTime
+  return clockedTime
 }
 
 
