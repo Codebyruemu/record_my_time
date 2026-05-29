@@ -11,7 +11,6 @@ if (userName !== null){
 if(lockInTimeObj !== null){
     const reportFound = document.getElementById('report-found')
     const table = document.querySelector('table')
-    console.log(table)
     
     const entryArr = Object.entries(lockInTimeObj).reverse()
     entryArr.forEach(([k,v])=>{

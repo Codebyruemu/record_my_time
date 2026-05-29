@@ -59,6 +59,7 @@ function formatTime(h, m, s) {
 
 // Clock1 tick
 function tickClock1() {
+  // sec increment here in line 63 is where the clock start and increment to hours till the treashold time is reached
   sec1++;
   if (sec1 === 60) { sec1 = 0; min1++; }
   if (min1 === 60) { min1 = 0; hr1++; }
@@ -158,31 +159,38 @@ function addStudyItem(today, timeValue) {
   let studyData = JSON.parse(localStorage.getItem('studyData')) || [];
 
   let clockedTime = studyData[1] !== undefined ? studyData[1] : {};
-  let dayOfMonth = new Date().getDate()
+  let currentDate = new Date().toISOString().slice(0, 10)
 
-  studyData[1] = addvals(timeValue,today,dayOfMonth,clockedTime);
-
+  studyData[1] = addvals(timeValue,today,currentDate,clockedTime);
+  // updatedData = addvals(timeValue,today,currentDate,clockedTime);
+  // studyData[1] = updatedData
   localStorage.setItem('studyData', JSON.stringify(studyData));
-  reseUiEl()
+  resetUiEl()
     
  
 }
 
-function addvals (timeVal,today,dayOfMonth,clockedTime) {
+function addvals (timeVal,today,currentDate,clockedTime) {
 
+  // the if condition below is used to avoid createin new day property eg recreating new fridays everytime
   if(clockedTime.hasOwnProperty(today)){
+    //passing the old data object to dayinfo
     let dayInfo = clockedTime[today]
-      if(dayInfo.lastTimeThisDay !== dayOfMonth){
+      if(dayInfo.lastTimeThisDay !== currentDate){
+        //updating the dayinfo variable with new data
           dayInfo.timeVest = [timeVal];
-          dayInfo.lastTimeThisDay = dayOfMonth
+          dayInfo.lastTimeThisDay = currentDate
           clockedTime[today] = dayInfo
           
+      }else{
+        //since its thesame date only add timeVal to the timeVest array 
+        dayInfo.timeVest.push(timeVal);
+        clockedTime[today] = dayInfo
       }
-      dayInfo.timeVest.push(timeVal);
-      clockedTime[today] = dayInfo
+      
     
   }else{
-    clockedTime[today] = {timeVest : [timeVal], lastTimeThisDay : dayOfMonth }
+    clockedTime[today] = {timeVest : [timeVal], lastTimeThisDay : currentDate }
 
   }
 
@@ -191,7 +199,7 @@ function addvals (timeVal,today,dayOfMonth,clockedTime) {
 
 
 //this function just updates UI does not have anything todo with slider() above
-function reseUiEl() {
+function resetUiEl() {
   setTimeout(()=>{
     motivationTips.textContent='No Active study session!'
   },3000)
