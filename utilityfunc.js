@@ -119,14 +119,17 @@ function stopAll() {
   clock1 = null;
   clock2 = null;
 
-  console.log("Threshold reached!");
-  console.log("Clock1 final:", formatTime(hr1, min1, sec1));
-  console.log("Clock2 final:", formatTime(hr2, min2, sec2));
 
     let currentDayName = getDay()
-    let timeValue = hr1 + (min1/100)
-    console.log(currentDayName)
-    console.log(hr1,min1,sec1)
+    
+    // Convert hr and min into minutes
+    let RawtimeValue = hr1 * 60 + min1;
+    // Later, when displaying, convert back to hr.min style
+    let hrPart = Math.floor(RawtimeValue / 60);
+    let minPart = RawtimeValue % 60;
+    let formatted = hrPart + (minPart / 100);
+    let timeValue = parseFloat(formatted.toFixed(2));
+    
 
   if (onStopCallback) onStopCallback();
 
