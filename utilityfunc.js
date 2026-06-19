@@ -66,7 +66,7 @@ function tickClock1() {
   displayTime1.textContent = formatTime(hr1, min1, sec1);
 }
 
-// Clock2 tick
+// Clock2 tick. this is the real controller. this contiue to repeat till the threshold is reached
 function tickClock2() {
   sec2++;
   if (sec2 === 60) { sec2 = 0; min2++; }
@@ -88,8 +88,8 @@ function resetTimeUI (){
 
 // Auto‑start both clocks
 export function initClocks(lockedInTime, stopCallback = null) {
-  //threshold = lockedInTime* 60 * 1000;
-  threshold = lockedInTime * 60 * 60 * 1000;
+  threshold = lockedInTime* 60 * 1000;
+  //threshold = lockedInTime * 60 * 60 * 1000;
   onStopCallback = stopCallback;
   if (!clock1 && !clock2) {
     start = Date.now();
@@ -118,18 +118,9 @@ function stopAll() {
   clearInterval(clock2);
   clock1 = null;
   clock2 = null;
-
-
-    let currentDayName = getDay()
-    
-    // Convert hr and min into minutes
-    let RawtimeValue = hr1 * 60 + min1;
-    // Later, when displaying, convert back to hr.min style
-    let hrPart = Math.floor(RawtimeValue / 60);
-    let minPart = RawtimeValue % 60;
-    let formatted = hrPart + (minPart / 100);
-    let timeValue = parseFloat(formatted.toFixed(2));
-    
+  let currentDayName = getDay()
+  // Store total time in seconds
+  let timeValue = hr1 * 3600 + min1 * 60 + sec1;
 
   if (onStopCallback) onStopCallback();
 
@@ -165,14 +156,13 @@ function addStudyItem(today, timeValue) {
   let currentDate = new Date().toISOString().slice(0, 10)
 
   studyData[1] = addvals(timeValue,today,currentDate,clockedTime);
-  // updatedData = addvals(timeValue,today,currentDate,clockedTime);
-  // studyData[1] = updatedData
   localStorage.setItem('studyData', JSON.stringify(studyData));
   resetUiEl()
     
  
 }
 
+ /**this function below is where we put the object that is saved in local storage to gether and send to line 167 */
 function addvals (timeVal,today,currentDate,clockedTime) {
 
   // the if condition below is used to avoid createin new day property eg recreating new fridays everytime

@@ -79,7 +79,7 @@ if(focusForm){
         sessionBtn.classList.add('hidden')
         let sliderIntervalId = slider(motivationTips)
 
-        //its the timer engine(starts timer, stop timer)
+        //init is the timer engine initiator. the engine that start and repeat the process till treashold is reached is clock2 = setInterval(tickClock2,100) in utils line 97
         initClocks(lockedInTime, () => clearInterval(sliderIntervalId))
         
     })

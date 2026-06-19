@@ -14,18 +14,25 @@ if(lockInTimeObj !== null){
     
     const entryArr = Object.entries(lockInTimeObj).reverse()
     entryArr.forEach(([k,v])=>{
-        let sumVal = v.timeVest.reduce((x,y)=>x+y)
-        let avg = (sumVal/v.timeVest.length)
-        let processAvg = parseFloat(avg.toFixed(2))
+        let TotalTime = v.timeVest.reduce((x,y)=>x+y,0)
+
+        let hrPart = Math.floor(TotalTime/3600)
+        let minPart = Math.floor((TotalTime % 3600)/60)
+
+        let avg = (TotalTime/v.timeVest.length)
+        let avghrPart = Math.floor(avg/3600)
+        let avgminPart = Math.floor((avg % 3600)/60)
 
         const tableRw = document.createElement('tr')
         const Day = document.createElement('td')
         const dayTotalTime = document.createElement('td')
         const dayAvgTime = document.createElement('td')
+        
 
         Day.textContent = `${k}`
-        dayTotalTime.textContent = `${sumVal}`
-        dayAvgTime.textContent = `${processAvg}`
+        
+        dayTotalTime.textContent = `${hrPart}:${minPart}`
+        dayAvgTime.textContent = `${avghrPart}:${avgminPart}`
 
         tableRw.appendChild(Day)
         tableRw.appendChild(dayTotalTime)
