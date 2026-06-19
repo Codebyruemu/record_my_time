@@ -88,8 +88,8 @@ function resetTimeUI (){
 
 // Auto‑start both clocks
 export function initClocks(lockedInTime, stopCallback = null) {
-  threshold = lockedInTime* 60 * 1000;
-  //threshold = lockedInTime * 60 * 60 * 1000;
+  //threshold = lockedInTime* 60 * 1000;
+  threshold = lockedInTime * 60 * 60 * 1000;
   onStopCallback = stopCallback;
   if (!clock1 && !clock2) {
     start = Date.now();
